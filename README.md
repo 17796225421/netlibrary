@@ -5,7 +5,8 @@ Failed to connect to github.com port 443: 拒绝连接
 解决方法：关闭vpn。
 
 或者
-git config --global --unset http.proxy
+git config --gl
+obal --unset http.proxy
 git config --global --unset https.proxy
 
 或者
