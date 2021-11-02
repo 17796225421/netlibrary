@@ -2,7 +2,7 @@
 ## 一
 GnuTLS recv error (-54): Error in the pull function.
 
-解决方法：删除远程库，新建远程库
+解决方法：删除远程库，添加远程库
 
 ## 二
 443
