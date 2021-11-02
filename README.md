@@ -8,6 +8,6 @@ git config --global --unset https.proxy
 
 ## 二 
 git push rewrite-muduo master:master
-fatal: 无法访问 'https://github.com/aqua5201314/rewrite-muduo.git/'：GnuTLS recv error (-54): Error in the pull function.
+Git:RPC失败。curI7 GNUTLS recy error(-54): Error in the pull function
 
 解决方法：网络不稳定，重启vscode，开启vpn
