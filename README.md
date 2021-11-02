@@ -6,3 +6,8 @@ vim /etc/hosts
 ```
 打开https://websites.ipaddress.com/www.github.com  得到github实时ip，
 在vim中添加：实时ip github.com
+199.232.5.194
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
