@@ -1,11 +1,25 @@
+
+
+
+
+
+
+
+
+![image-20211106163039308](image/image-20211106163039308.png)
+
+ 	
+
+
+
+
+
+
+
+
+
 # 遇到的问题
-## 一
-GnuTLS recv error (-54): Error in the pull function.
 
-解决方法：删除远程库，添加远程库
+## git
 
-## 二
-Failed to connect to github.com port 443: 拒绝连接
-解决方法：可能ping不通github，简单搜索解决
-
-test
+遇到意外先删除再clone再add再push再commit
