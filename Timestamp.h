@@ -6,7 +6,7 @@
 class Timestamp{
 public:
     Timestamp();
-    Timestamp(int64_t microSecondsSinceEpoch);
+    explicit Timestamp(int64_t microSecondsSinceEpoch);
     static Timestamp now();
     std::string toString()const;
 
