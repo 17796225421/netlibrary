@@ -12,7 +12,7 @@ class EventLoop;
 /**
  * muduo库中多路时间分发器的核心IO复用模块
 */
-class Poller:noncopyable{
+class Poller{
 public:
     using ChannelList=std::vector<Channel*>;
 

@@ -8,9 +8,9 @@ class Buffer
 {
 public:
     static const size_t kCheapPrepend = 8;
-    static const size_t kInitalSize = 1024;
+    static const size_t kInitialSize = 1024;
 
-    explicit Buffer(size_t initialSize = kInitalSize)
+    explicit Buffer(size_t initialSize = kInitialSize)
         : buffer_(kCheapPrepend + initialSize),
           readerIndex_(kCheapPrepend),
           writerIndex_(kCheapPrepend)
@@ -32,7 +32,7 @@ public:
         return readerIndex_;
     }
 
-    void ensureWriteableByte(size_t len)
+    void ensureWriteableBytes(size_t len)
     {
         if (writableBytes() < len)
         {
@@ -43,7 +43,7 @@ public:
     // 把[data,data+len]内存上的数据，添加到writable缓冲区当中
     void append(const char *data, size_t len)
     {
-        ensureWriteableByte(len);
+        ensureWriteableBytes(len);
         std::copy(data, data + len, beginWrite());
         writerIndex_ += len;
     }

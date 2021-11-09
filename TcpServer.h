@@ -7,8 +7,10 @@
 #include "Acceptor.h"
 #include "InetAddress.h"
 #include "noncopyable.h"
-#include "EventLoopThreadPoll.h"
+#include "EventLoopThreadPool.h"
 #include "Callbacks.h"
+#include "TcpConnection.h"
+#include "Buffer.h"
 
 #include <functional>
 #include <string>
@@ -58,7 +60,7 @@ private:
 
     std::unique_ptr<Acceptor> acceptor_; // 运行在mainloop，任务是监听新连接事件
 
-    std::shared_ptr<EventLoopThreadPoll> threadPoll_; // one loop per thread
+    std::shared_ptr<EventLoopThreadPool> threadPool_; // one loop per thread
 
     ConnectionCallback connectionCallback_;       // 有新连接时的回调
     MessageCallback messageCallback_;             // 有读写消息时的回调

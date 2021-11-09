@@ -7,7 +7,6 @@
 #include <functional>
 #include <vector>
 #include <atomic>
-#include <pthread.h>
 #include <memory>
 #include <mutex>
 

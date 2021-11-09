@@ -4,7 +4,7 @@
 
 #include <errno.h>
 #include <unistd.h>
-#include <string.h>
+#include <strings.h>
 
 // channel未添加到poller中
 const int kNew = -1; // channel的成员index_=-1是初始状态
@@ -118,7 +118,7 @@ void EPollPoller::fillActiveChannels(int numEvents, ChannelList *activeChannels)
 void EPollPoller::update(int operation, Channel *channel)
 {
     epoll_event event;
-    memset(&event,0,sizeof(event));
+    bzero(&event,sizeof(event));
 
     int fd=channel->fd();
     event.events=channel->events();
