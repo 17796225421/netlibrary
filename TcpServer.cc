@@ -3,7 +3,7 @@
 
 #include <functional>
 
-EventLoop *CheckLoopNotNull(EventLoop *loop)
+static EventLoop *CheckLoopNotNull(EventLoop *loop)
 {
     if (loop == nullptr)
     {
@@ -43,10 +43,10 @@ void TcpServer::setThreadNum(int numThreads)
 // 开启服务器监听  loop.loop()
 void TcpServer::start()
 {
-    if (started_++ == 0)// 防止一个TcpServer对象被start多次
+    if (started_++ == 0) // 防止一个TcpServer对象被start多次
     {
-        threadPoll_->start(threadInitCallback_);// 启动底层的线程池
-        loop_->runInLoop(std::bind(&Acceptor::listen,acceptor_.get()));
+        threadPoll_->start(threadInitCallback_); // 启动底层的线程池
+        loop_->runInLoop(std::bind(&Acceptor::listen, acceptor_.get()));
     }
 }
 
@@ -61,3 +61,4 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn)
 void TcpServer::removeConnectionInLoop(const TcpConnectionPtr &conn)
 {
 }
+

@@ -27,7 +27,8 @@ public:
         return buffer_.size() - writerIndex_;
     }
 
-    size_t prependableBytes()const{
+    size_t prependableBytes() const
+    {
         return readerIndex_;
     }
 
@@ -40,33 +41,27 @@ public:
     }
 
     // 把[data,data+len]内存上的数据，添加到writable缓冲区当中
-    void append(const char *data,size_t len){
+    void append(const char *data, size_t len)
+    {
         ensureWriteableByte(len);
-        std::copy(data,data+len,beginWrite());
-        writerIndex_+=len;
+        std::copy(data, data + len, beginWrite());
+        writerIndex_ += len;
     }
 
-    char *beginWrite(){
-        return begin()+writerIndex_;
+    char *beginWrite()
+    {
+        return begin() + writerIndex_;
     }
 
-    const char *beginWrite()const{
-        return begin()+writerIndex_;
+    const char *beginWrite() const
+    {
+        return begin() + writerIndex_;
     }
 
     // 从fd上读取数据
-    ssize_t readFd(int fd,int *saveErrno);
-
-private:
-    char *begin()
-    {
-        return &*buffer_.begin(); // 迭代器转化为指针
-    }
-
-    const char *begin() const
-    {
-        return &*buffer_.begin();
-    }
+    ssize_t readFd(int fd, int *saveErrno);
+    // 通过fd发送数据
+    ssize_t writeFd(int fd, int *saveErrno);
 
     // 返回缓冲区中可读数据的起始地址
     const char *peek() const
@@ -105,6 +100,17 @@ private:
         return result;
     }
 
+private:
+    char *begin()
+    {
+        return &*buffer_.begin(); // 迭代器转化为指针
+    }
+
+    const char *begin() const
+    {
+        return &*buffer_.begin();
+    }
+
     void makeSpace(size_t len)
     {
         /**
@@ -121,8 +127,8 @@ private:
             std::copy(begin() + readerIndex_,
                       begin() + writerIndex_,
                       begin() + kCheapPrepend);
-            readerIndex_=kCheapPrepend;
-            writerIndex_=readerIndex_+readable;
+            readerIndex_ = kCheapPrepend;
+            writerIndex_ = readerIndex_ + readable;
         }
     }
 
