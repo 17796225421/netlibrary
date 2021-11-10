@@ -39,8 +39,8 @@ int Socket::accept(InetAddress *peeraddr)
      * poller + non-blocking IO
      */
     sockaddr_in addr;
-    socklen_t len = sizeof addr;
-    bzero(&addr, sizeof addr);
+    socklen_t len = sizeof(addr);
+    bzero(&addr, sizeof(addr));
     int connfd = ::accept4(sockfd_, (sockaddr *)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC);
     if (connfd >= 0)
     {
