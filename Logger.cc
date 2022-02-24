@@ -4,7 +4,7 @@
 #include <iostream>
 
 // 获取日志唯一的实例对象
-Logger &Logger::instance()
+Logger& Logger::instance()
 {
     static Logger logger;
     return logger;
@@ -19,23 +19,24 @@ void Logger::setLogLevel(int level)
 // 写日志  [级别信息] time : msg
 void Logger::log(std::string msg)
 {
-    if (logLevel_ == INFO)
+    switch (logLevel_)
     {
+    case INFO:
         std::cout << "[INFO]";
-    }
-    else if (logLevel_ == ERROR)
-    {
+        break;
+    case ERROR:
         std::cout << "[ERROR]";
-    }
-    else if (logLevel_ == FATAL)
-    {
-        std::cout << "FATAL";
-    }
-    else if (logLevel_ == DEBUG)
-    {
-        std::cout << "DEBUG";
+        break;
+    case FATAL:
+        std::cout << "[FATAL]";
+        break;
+    case DEBUG:
+        std::cout << "[DEBUG]";
+        break;
+    default:
+        break;
     }
 
-    // 打印时间
+    // 打印时间和msg
     std::cout << Timestamp::now().toString() << " : " << msg << std::endl;
 }

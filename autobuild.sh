@@ -16,16 +16,16 @@ cd `pwd`/build &&
 # 回到项目根目录
 cd ..
 
-# 把头文件拷贝到 /usr/include/mymuduo  so库拷贝到 /usr/lib    PATH
-if [ ! -d /usr/include/mymuduo ]; then 
-    mkdir /usr/include/mymuduo
+# 把头文件拷贝到 /usr/include/netlibrary  so库拷贝到 /usr/lib    PATH
+if [ ! -d /usr/include/netlibrary ]; then 
+    mkdir /usr/include/netlibrary
 fi
 
 for header in `ls *.h`
 do
-    cp $header /usr/include/mymuduo
+    cp $header /usr/include/netlibrary
 done
 
-cp `pwd`/lib/libmymuduo.so /usr/lib
+cp `pwd`/lib/libnetlibrary.so /usr/lib
 
 ldconfig
