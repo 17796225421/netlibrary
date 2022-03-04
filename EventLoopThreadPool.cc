@@ -39,7 +39,7 @@ EventLoop* EventLoopThreadPool::getNextLoop()
 {
     EventLoop *loop = baseLoop_;
 
-    if (!loops_.empty()) // 通过轮询获取下一个处理事件的loop
+    if (!loops_.empty()) // 通过轮询获下取一个处理事件的loop
     {
         loop = loops_[next_];
         ++next_;

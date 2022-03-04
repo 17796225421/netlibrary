@@ -22,7 +22,7 @@ public:
 
     bool started() const { return started_; }
     pid_t tid() const { return tid_; }
-    const std::string& name() const { return name_; }
+    const std::string& name() const { return name_; }   
 
     static int numCreated() { return numCreated_; }
 private:

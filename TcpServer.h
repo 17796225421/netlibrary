@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * 用户使用muduo编写服务器程序
+ * 用户使用netlibrary编写服务器程序
  */ 
 #include "EventLoop.h"
 #include "Acceptor.h"

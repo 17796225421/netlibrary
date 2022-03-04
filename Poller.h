@@ -9,7 +9,7 @@
 class Channel;
 class EventLoop;
 
-// muduo库中多路事件分发器的核心IO复用模块
+// netlibrary中多路事件分发器的核心IO复用模块
 class Poller : noncopyable
 {
 public:

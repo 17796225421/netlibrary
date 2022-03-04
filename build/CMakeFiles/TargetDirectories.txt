@@ -1,3 +1,0 @@
-/root/project/netlibrary/build/CMakeFiles/edit_cache.dir
-/root/project/netlibrary/build/CMakeFiles/rebuild_cache.dir
-/root/project/netlibrary/build/CMakeFiles/netlibrary.dir
