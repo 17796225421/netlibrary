@@ -4,7 +4,7 @@
 
 #include "noncopyable.h"
 
-// LOG_INFO("%s %d", arg1, arg2)
+#ifdef MUINFO
 #define LOG_INFO(logmsgFormat, ...) \
     do \
     { \
@@ -13,8 +13,12 @@
         char buf[1024] = {0}; \
         snprintf(buf, 1024, logmsgFormat, ##__VA_ARGS__); \
         logger.log(buf); \
-    } while(0) 
+    } while(0)
+#else
+    #define LOG_INFO(logmsgFormat, ...)
+#endif
 
+#ifdef MUERROR
 #define LOG_ERROR(logmsgFormat, ...) \
     do \
     { \
@@ -23,8 +27,12 @@
         char buf[1024] = {0}; \
         snprintf(buf, 1024, logmsgFormat, ##__VA_ARGS__); \
         logger.log(buf); \
-    } while(0) 
+    } while(0)
+#else
+    #define LOG_ERROR(logmsgFormat, ...)
+#endif
 
+#ifdef MUFATAL
 #define LOG_FATAL(logmsgFormat, ...) \
     do \
     { \
@@ -34,7 +42,10 @@
         snprintf(buf, 1024, logmsgFormat, ##__VA_ARGS__); \
         logger.log(buf); \
         exit(-1); \
-    } while(0) 
+    } while(0)
+#else
+    #define LOG_FATAL(logmsgFormat, ...)
+#endif
 
 #ifdef MUDEBUG
 #define LOG_DEBUG(logmsgFormat, ...) \

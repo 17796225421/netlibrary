@@ -1,5 +1,5 @@
 testserver :
-	g++ -o testserver testserver.cc -lnetlibrary -lpthread -g
+	g++ -o testserver testserver.cc -lnetlibrary -lpthread
 
 clean :
 	rm -f testserver

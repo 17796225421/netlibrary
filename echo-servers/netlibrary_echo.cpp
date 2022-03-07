@@ -51,19 +51,25 @@ private:
     {
         std::string msg = buf->retrieveAllAsString();
         conn->send(msg);
-        conn->shutdown(); // 写端   EPOLLHUP =》 closeCallback_
     }
 
     EventLoop *loop_;
     TcpServer server_;
 };
 
-int main()
+int main(int argc, char** argv)
 {
+    if(argc < 2){
+        printf("Usage: cmd port\n");
+        return -10;
+    }
+    int port = atoi(argv[1]);
+
     EventLoop loop;
-    InetAddress addr(9999);
+    InetAddress addr(port);
     EchoServer server(&loop, addr, "EchoServer-01"); // Acceptor non-blocking listenfd  create bind 
     server.start(); // listen  loopthread  listenfd => acceptChannel => mainLoop =>
+
     loop.loop(); // 启动mainLoop的底层Poller
 
     return 0;

@@ -51,14 +51,14 @@ TcpConnection::TcpConnection(EventLoop *loop,
         std::bind(&TcpConnection::handleError, this)
     );
 
-    LOG_INFO("TcpConnection::ctor[%s] at fd=%d\n", name_.c_str(), sockfd);
+    LOG_DEBUG("TcpConnection::ctor[%s] at fd=%d\n", name_.c_str(), sockfd);
     socket_->setKeepAlive(true);
 }
 
 
 TcpConnection::~TcpConnection()
 {
-    LOG_INFO("TcpConnection::dtor[%s] at fd=%d state=%d \n", 
+    LOG_DEBUG("TcpConnection::dtor[%s] at fd=%d state=%d \n", 
         name_.c_str(), channel_->fd(), (int)state_);
 }
 
@@ -253,7 +253,7 @@ void TcpConnection::handleWrite()
 // poller => channel::closeCallback => TcpConnection::handleClose
 void TcpConnection::handleClose()
 {
-    LOG_INFO("TcpConnection::handleClose fd=%d state=%d \n", channel_->fd(), (int)state_);
+    LOG_DEBUG("TcpConnection::handleClose fd=%d state=%d \n", channel_->fd(), (int)state_);
     setState(kDisconnected);
     channel_->disableAll();
 
